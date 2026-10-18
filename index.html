@@ -1,116 +1,116 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BlockPlay - Games</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;background:#111216;color:white;
-font-family:Arial,sans-serif}
-header{background:#202127;padding:15px;
-display:flex;align-items:center;gap:14px;
-position:sticky;top:0;z-index:2}
-.logo{font-size:24px;font-weight:900;color:#ff424f}
-input{width:100%;padding:12px;border:0;
-border-radius:8px;background:#303138;color:white}
-nav{display:flex;gap:9px;padding:12px;
-overflow-x:auto;background:#1b1c21}
-nav button{white-space:nowrap}
-button{border:0;border-radius:7px;padding:10px 15px;
-background:#ff424f;color:white;font-weight:bold;
-cursor:pointer}
-button:active{transform:scale(.97)}
-main{padding:18px;max-width:1100px;margin:auto}
-h1{font-size:26px}
-.muted{color:#a7a7b3}
-.grid{display:grid;grid-template-columns:
-repeat(auto-fit,minmax(145px,1fr));gap:14px}
-.card{background:#202127;border-radius:12px;
-overflow:hidden;min-width:0}
-.thumb{height:115px;display:grid;place-items:center;
-font-size:53px;background:linear-gradient(135deg,#373c55,#202127)}
-.info{padding:11px}
-.info h3{margin:0 0 7px;font-size:16px}
-.info p{font-size:12px;color:#b4b4c0}
-.play{width:100%}
-footer{text-align:center;padding:25px;color:#999;
-font-size:12px}
-#message{margin-top:18px;color:#ff9da4}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roblox - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<header>
-  <div class="logo">BLOX</div>
-  <input id="search" placeholder="Search games..."
-  aria-label="Search games">
-</header>
-<nav>
-  <button onclick="filterGames('All')">Home</button>
-  <button onclick="filterGames('Adventure')">Adventure</button>
-  <button onclick="filterGames('Obby')">Obby</button>
-  <button onclick="filterGames('Simulator')">Simulator</button>
-</nav>
-<main>
-  <h1>Discover</h1>
-  <p class="muted">Find your next favorite game!</p>
-  <h2>Popular experiences</h2>
-  <div class="grid" id="games"></div>
-  <p id="message" role="status"></p>
-</main>
-<footer>
-  BlockPlay is an independent fan-made demo.
-  Not affiliated with or endorsed by Roblox.
-</footer>
-<script>
-const data=[
- {name:"Escape the Tsunami",cat:"Adventure",emoji:"🌊",players:"Adventure"},
- {name:"Mega Obby",cat:"Obby",emoji:"🏃",players:"Parkour"},
- {name:"Pet World",cat:"Simulator",emoji:"🐾",players:"Pets"},
- {name:"City Life",cat:"Adventure",emoji:"🏙️",players:"Roleplay"},
- {name:"Speed Legends",cat:"Simulator",emoji:"⚡",players:"Racing"},
- {name:"Tower Challenge",cat:"Obby",emoji:"🗼",players:"Jump & climb"},
- {name:"Build a Kingdom",cat:"Simulator",emoji:"🏰",players:"Building"},
- {name:"Treasure Island",cat:"Adventure",emoji:"🏝️",players:"Exploration"}
-];
-let category="All";
-const games=document.getElementById("games");
-const search=document.getElementById("search");
-function render(){
- const q=search.value.toLowerCase();
- games.innerHTML="";
- data.filter(g=>(category==="All"||g.cat===category)
- &&g.name.toLowerCase().includes(q)).forEach(g=>{
- const card=document.createElement("article");
- card.className="card";
- const thumb=document.createElement("div");
- thumb.className="thumb";
- thumb.textContent=g.emoji;
- const info=document.createElement("div");
- info.className="info";
- const title=document.createElement("h3");
- title.textContent=g.name;
- const desc=document.createElement("p");
- desc.textContent=g.players+" · "+g.cat;
- const play=document.createElement("button");
- play.className="play";
- play.textContent="▶ Play";
- play.onclick=()=>{
- document.getElementById("message").textContent=
- g.name+" is a demo game card. No game server is connected yet.";
- };
- info.append(title,desc,play);
- card.append(thumb,info);
- games.append(card);
- });
-}
-function filterGames(cat){
- category=cat;
- render();
-}
-search.addEventListener("input",render);
-render();
-</script>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div>
+      <div class="logo-area">
+        <svg viewBox="0 0 24 24"><path d="M18.9 3.5L5.1 8.2l-3.5 13.8 13.8-4.7 3.5-13.8zm-9.3 11l-2.6-.9.9-2.6 2.6.9-.9 2.6z"/></svg>
+        <span>Roblox</span>
+      </div>
+      <ul class="nav-links">
+        <li class="active"><a href="#"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li><a href="#"><i class="fa-solid fa-gamepad"></i> Discover</a></li>
+        <li><a href="#"><i class="fa-solid fa-store"></i> Avatar Shop</a></li>
+        <li><a href="#"><i class="fa-solid fa-code"></i> Create</a></li>
+        <li><a href="#"><i class="fa-solid fa-coins"></i> Robux</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-footer" style="font-size: 13px; color: var(--text-muted); text-align: center;">
+      <p>&copy; 2026 Roblox Clone</p>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Header -->
+    <header>
+      <div class="search-bar">
+        <i class="fa-solid fa-search" style="color: var(--text-muted);"></i>
+        <input type="text" placeholder="Search games, catalog, players...">
+      </div>
+      <div class="user-profile">
+        <div style="text-align: right;">
+          <div style="font-weight: bold; font-size: 14px;">PlayerOne</div>
+          <div style="font-size: 12px; color: var(--accent-green);">R$ 1,250</div>
+        </div>
+        <div class="avatar-circle">P1</div>
+      </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-body">
+      <h1>Welcome back, PlayerOne!</h1>
+
+      <!-- Continue Playing Section -->
+      <div class="section-title">Continue Playing</div>
+      <div class="games-grid">
+        <div class="game-card">
+          <div class="game-thumbnail">⚔️</div>
+          <div class="game-info">
+            <div class="game-title">BedWars</div>
+            <div class="game-stats"><span><i class="fa-solid fa-user"></i> 45.2K</span><span><i class="fa-solid fa-star" style="color: #f1c40f;"></i> 92%</span></div>
+          </div>
+        </div>
+        <div class="game-card">
+          <div class="game-thumbnail">🌊</div>
+          <div class="game-info">
+            <div class="game-title">Blox Fruits</div>
+            <div class="game-stats"><span><i class="fa-solid fa-user"></i> 380K</span><span><i class="fa-solid fa-star" style="color: #f1c40f;"></i> 95%</span></div>
+          </div>
+        </div>
+        <div class="game-card">
+          <div class="game-thumbnail">🏢</div>
+          <div class="game-info">
+            <div class="game-title">Adopt Me!</div>
+            <div class="game-stats"><span><i class="fa-solid fa-user"></i> 120K</span><span><i class="fa-solid fa-star" style="color: #f1c40f;"></i> 89%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommended For You -->
+      <div class="section-title">Recommended For You</div>
+      <div class="games-grid">
+        <div class="game-card">
+          <div class="game-thumbnail">⚡</div>
+          <div class="game-info">
+            <div class="game-title">Blade Ball</div>
+            <div class="game-stats"><span><i class="fa-solid fa-user"></i> 65.4K</span><span><i class="fa-solid fa-star" style="color: #f1c40f;"></i> 91%</span></div>
+          </div>
+        </div>
+        <div class="game-card">
+          <div class="game-thumbnail">🚗</div>
+          <div class="game-info">
+            <div class="game-title">Driving Empire</div>
+            <div class="game-stats"><span><i class="fa-solid fa-user"></i> 22.1K</span><span><i class="fa-solid fa-star" style="color: #f1c40f;"></i> 88%</span></div>
+          </div>
+        </div>
+        <div class="game-card">
+          <div class="game-thumbnail">🎯</div>
+          <div class="game-info">
+            <div class="game-title">Arsenal</div>
+            <div class="game-stats"><span><i class="fa-solid fa-user"></i> 14.8K</span><span><i class="fa-solid fa-star" style="color: #f1c40f;"></i> 90%</span></div>
+          </div>
+        </div>
+        <div class="game-card">
+          <div class="game-thumbnail">🚪</div>
+          <div class="game-info">
+            <div class="game-title">Doors</div>
+            <div class="game-stats"><span><i class="fa-solid fa-user"></i> 32.5K</span><span><i class="fa-solid fa-star" style="color: #f1c40f;"></i> 94%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
